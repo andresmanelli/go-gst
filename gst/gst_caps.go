@@ -428,15 +428,6 @@ func (c *Caps) SetFeaturesAt(idx uint, features *CapsFeatures) {
 	C.gst_caps_set_features(c.Instance(), C.guint(idx), features.Instance())
 }
 
-// SetFeaturesSimple sets the CapsFeatures for all the structures of these caps.
-func (c *Caps) SetFeaturesSimple(features *CapsFeatures) {
-	if features == nil {
-		C.gst_caps_set_features_simple(c.Instance(), nil)
-		return
-	}
-	C.gst_caps_set_features_simple(c.Instance(), features.Instance())
-}
-
 // SetValue sets the given field on all structures of caps to the given value. This is a convenience
 // function for calling SetValue on all structures of caps. If the value cannot be coerced to a C type,
 // then nothing will happen.

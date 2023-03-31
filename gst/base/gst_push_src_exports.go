@@ -9,7 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/andresmanelli/go-gst/gst"
 )
 
 //export goGstPushSrcAlloc

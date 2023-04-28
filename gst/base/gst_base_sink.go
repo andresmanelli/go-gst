@@ -111,11 +111,6 @@ func (g *GstBaseSink) GetMaxLateness() int64 {
 	return int64(C.gst_base_sink_get_max_lateness(g.Instance()))
 }
 
-// GetProcessingDeadline gets the processing deadline of the sink.
-func (g *GstBaseSink) GetProcessingDeadline() time.Duration {
-	return time.Duration(C.gst_base_sink_get_processing_deadline(g.Instance()))
-}
-
 // GetRenderDelay gets the render delay for the sink.
 func (g *GstBaseSink) GetRenderDelay() time.Duration {
 	return time.Duration(C.gst_base_sink_get_render_delay(g.Instance()))
@@ -229,14 +224,6 @@ func (g *GstBaseSink) SetMaxBitrate(bitrate uint64) {
 // value of -1 means an unlimited time.
 func (g *GstBaseSink) SetMaxLateness(maxLateness int64) {
 	C.gst_base_sink_set_max_lateness(g.Instance(), C.gint64(maxLateness))
-}
-
-// SetProcessingDeadline sets the maximum amount of time (in nanoseconds) that the pipeline can take
-// for processing the buffer. This is added to the latency of live pipelines.
-//
-// This function is usually called by subclasses.
-func (g *GstBaseSink) SetProcessingDeadline(deadline time.Duration) {
-	C.gst_base_sink_set_processing_deadline(g.Instance(), C.GstClockTime(deadline.Nanoseconds()))
 }
 
 // SetQoSEnabled configures sink to send Quality-of-Service events upstream.
